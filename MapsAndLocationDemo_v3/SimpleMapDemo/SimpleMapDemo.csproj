@@ -58,7 +58,7 @@
     <Compile Include="MapWithOverlaysActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SampleMetaData.cs" />
+    <Compile Include="SampleActivityMetaData.cs" />
     <Compile Include="MapWithMarkersActivity.cs" />
     <Compile Include="BasicDemoActivity.cs" />
     <Compile Include="SamplesListAdapter.cs" />

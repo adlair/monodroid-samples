@@ -18,7 +18,7 @@ namespace SimpleMapDemo
             _description = view.FindViewById<TextView>(Resource.Id.description);
         }
 
-        public void UpdateFrom(SampleMetaData sample)
+        public void UpdateFrom(SampleActivityMetaData sample)
         {
             _title.SetText(sample.TitleResource);
             _description.SetText(sample.DescriptionResource);

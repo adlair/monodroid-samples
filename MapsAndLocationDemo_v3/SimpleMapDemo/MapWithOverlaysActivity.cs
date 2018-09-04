@@ -1,7 +1,6 @@
 using Android.App;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
-using Android.Graphics;
 using Android.OS;
 using Android.Support.V7.App;
 using Android.Widget;
@@ -24,17 +23,19 @@ namespace SimpleMapDemo
         };
 
         GoogleMap googleMap;
-        SupportMapFragment mapFragment;
+        MapFragment mapFragment;
         string gotMauiMarkerId;
         Marker polarBearMarker;
         GroundOverlay polarBearOverlay;
+
+
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
             SetContentView(Resource.Layout.MapWithOverlayLayout);
 
-            mapFragment = (SupportMapFragment)SupportFragmentManager.FindFragmentById(Resource.Id.map);
+            mapFragment = (MapFragment)FragmentManager.FindFragmentById(Resource.Id.map);
             mapFragment.GetMapAsync(this);
 
         }
@@ -42,19 +43,11 @@ namespace SimpleMapDemo
         public void OnMapReady(GoogleMap map)
         {
             googleMap = map;
-
-            var mapOptions = new GoogleMapOptions()
-                             .InvokeMapType(GoogleMap.MapTypeNormal)
-                             .InvokeZoomControlsEnabled(false)
-                             .InvokeCompassEnabled(true);
-
-
+            googleMap.MyLocationEnabled = true;
 
             AddMonkeyMarkersToMap();
             AddInitialPolarBarToMap();
 
-            googleMap.MyLocationEnabled = true;
-            
             // Animate the move on the map so that it is showing the markers we added above.
             googleMap.AnimateCamera(CameraUpdateFactory.NewLatLngZoom(LocationForCustomIconMarkers[1], 2));
 
@@ -70,8 +63,7 @@ namespace SimpleMapDemo
             googleMap.MyLocationEnabled = false;
 
             googleMap.MarkerClick -= MapOnMarkerClick;
-
-            googleMap.InfoWindowClick += HandleInfoWindowClick;
+            googleMap.InfoWindowClick -= HandleInfoWindowClick;
 
             base.OnPause();
 

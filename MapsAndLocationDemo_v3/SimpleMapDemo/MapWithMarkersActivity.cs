@@ -17,19 +17,13 @@ namespace SimpleMapDemo
         Button animateToLocationButton;
         GoogleMap googleMap;
 
-        public void OnMapReady(GoogleMap map)
-        {
-            googleMap = map;
-            AddMarkersToMap();
-            animateToLocationButton.Click += AnimateToPasschendaele;
-        }
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.MapLayout);
 
-            var mapFragment = (SupportMapFragment) SupportFragmentManager.FindFragmentById(Resource.Id.map);
+            var mapFragment = (MapFragment) FragmentManager.FindFragmentById(Resource.Id.map);
             mapFragment.GetMapAsync(this);
 
             animateToLocationButton = FindViewById<Button>(Resource.Id.animateButton);
@@ -38,6 +32,19 @@ namespace SimpleMapDemo
             SetupZoomInButton();
             SetupZoomOutButton();
         }
+
+
+        public void OnMapReady(GoogleMap map)
+        {
+            googleMap = map;
+
+            googleMap.UiSettings.ZoomControlsEnabled = true;
+            googleMap.UiSettings.CompassEnabled = true; 
+            AddMarkersToMap();
+            animateToLocationButton.Click += AnimateToPasschendaele;
+        }
+
+
 
         void AnimateToPasschendaele(object sender, EventArgs e)
         {
@@ -61,6 +68,7 @@ namespace SimpleMapDemo
                       .SetTitle("Vimy Ridge")
                       .SetIcon(BitmapDescriptorFactory.DefaultMarker(BitmapDescriptorFactory.HueCyan));
             googleMap.AddMarker(vimyMarker);
+
 
             var passchendaeleMarker = new MarkerOptions();
             passchendaeleMarker.SetPosition(PasschendaeleLatLng)
