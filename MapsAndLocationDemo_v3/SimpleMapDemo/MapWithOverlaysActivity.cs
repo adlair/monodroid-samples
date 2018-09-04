@@ -7,8 +7,6 @@ using Android.Widget;
 
 namespace SimpleMapDemo
 {
-    using System;
-
     [Activity(Label = "@string/activity_label_mapwithoverlays")]
     public class MapWithOverlaysActivity : AppCompatActivity, IOnMapReadyCallback
     {
@@ -43,7 +41,7 @@ namespace SimpleMapDemo
         public void OnMapReady(GoogleMap map)
         {
             googleMap = map;
-            googleMap.MyLocationEnabled = true;
+            googleMap.MyLocationEnabled = false;
 
             AddMonkeyMarkersToMap();
             AddInitialPolarBarToMap();

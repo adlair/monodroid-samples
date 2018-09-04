@@ -39,7 +39,8 @@ namespace SimpleMapDemo
             googleMap = map;
 
             googleMap.UiSettings.ZoomControlsEnabled = true;
-            googleMap.UiSettings.CompassEnabled = true; 
+            googleMap.UiSettings.CompassEnabled = true;
+            googleMap.UiSettings.MyLocationButtonEnabled = false;
             AddMarkersToMap();
             animateToLocationButton.Click += AnimateToPasschendaele;
         }
