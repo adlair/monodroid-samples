@@ -17,17 +17,11 @@
 	
     <!--
 	NOTE: you MUST follow the instructions on this page
-	http://developer.xamarin.com/guides/android/platform_features/maps_and_location/maps/obtaining_a_google_maps_api_key/
+	https://docs.microsoft.com/xamarin/android/platform/maps-and-location/maps/obtaining-a-google-maps-api-key?
 	to get an API key for your specific debug.keystore SHA1 and package name.
-
-	Update all the values below:
-	* package name in the prefix of uses-permission element
-	* package name in the prefix of permission element
-	* API_KEY value obtained from https://console.developers.google.com/
 	-->
 	<application android:label="@string/app_name" android:icon="@drawable/icon" android:theme="@style/AppTheme">
 		<!-- Put your Google Maps V2 API Key here. This key will not work for you.-->
-		<!-- See https://developers.google.com/maps/documentation/android/start#obtaining_an_api_key -->
 		<meta-data android:name="com.google.android.geo.API_KEY" android:value="PUT YOUR API KEY HERE" />
 		<meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
 	</application>
