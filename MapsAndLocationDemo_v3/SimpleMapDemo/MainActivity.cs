@@ -15,7 +15,7 @@ namespace SimpleMapDemo
 {
     using AndroidUri = Uri;
 
-    [Activity(Label = "@string/app_name", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "@string/app_name", MainLauncher = true, Icon = "@drawable/icon", Theme = "@style/AppTheme")]
     public class MainActivity : AppCompatActivity
     {
         public static readonly int RC_INSTALL_GOOGLE_PLAY_SERVICES = 1000;
@@ -34,16 +34,19 @@ namespace SimpleMapDemo
                                                                                          typeof(MapWithMarkersActivity)),
                                                                       new SampleActivityMetaData(Resource.String.activity_label_mapwithoverlays,
                                                                                          Resource.String.activity_description_mapwithoverlays,
-                                                                                         typeof(MapWithOverlaysActivity))
-                                                                  };
+                                                                                         typeof(MapWithOverlaysActivity)),
+                                                                      new SampleActivityMetaData(Resource.String.activity_label_mylocation,
+                                                                                         Resource.String.activity_description_mylocation,
+                                                                                         typeof(MyLocationActivity))
+        };
 
         bool isGooglePlayServicesInstalled;
         SamplesListAdapter listAdapter;
         ListView listView;
 
-        protected override void OnCreate(Bundle bundle)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(bundle);
+            base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.MainActivity);
             isGooglePlayServicesInstalled = TestIfGooglePlayServicesIsInstalled();
 
